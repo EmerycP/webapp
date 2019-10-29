@@ -1,1 +1,5 @@
+com\emerycprimeau\Token.class
 com\emerycprimeau\WebService.class
+com\emerycprimeau\GSONMapper.class
+com\emerycprimeau\EmailPassword.class
+com\emerycprimeau\GestionExceptions.class
