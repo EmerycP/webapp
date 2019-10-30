@@ -40,3 +40,12 @@
 0:0:0:0:0:0:0:1 - - [30/Oct/2019:16:16:52 -0400] "POST /api/signup HTTP/1.1" 400 24 http-bio-8080-exec-2 53
 0:0:0:0:0:0:0:1 - - [30/Oct/2019:16:17:07 -0400] "POST /api/signup HTTP/1.1" 200 38 http-bio-8080-exec-3 10
 0:0:0:0:0:0:0:1 - - [30/Oct/2019:16:17:46 -0400] "POST /api/login HTTP/1.1" 400 20 http-bio-8080-exec-4 4
+0:0:0:0:0:0:0:1 - - [30/Oct/2019:16:18:17 -0400] "POST /api/init HTTP/1.1" 204 - http-bio-8080-exec-1 574
+127.0.0.1 - - [30/Oct/2019:16:30:15 -0400] "POST /api/signup HTTP/1.1" 200 41 http-bio-8080-exec-3 54
+127.0.0.1 - - [30/Oct/2019:16:30:41 -0400] "POST /api/signup HTTP/1.1" 200 42 http-bio-8080-exec-5 6
+0:0:0:0:0:0:0:1 - - [30/Oct/2019:16:33:37 -0400] "POST /api/init HTTP/1.1" 400 24 http-bio-8080-exec-7 5
+0:0:0:0:0:0:0:1 - - [30/Oct/2019:16:33:59 -0400] "POST /api/init HTTP/1.1" 204 - http-bio-8080-exec-1 652
+127.0.0.1 - - [30/Oct/2019:16:35:16 -0400] "POST /api/login HTTP/1.1" 400 20 http-bio-8080-exec-3 57
+127.0.0.1 - - [30/Oct/2019:16:35:32 -0400] "POST /api/login HTTP/1.1" 200 38 http-bio-8080-exec-4 8
+127.0.0.1 - - [30/Oct/2019:16:35:53 -0400] "POST /api/signup HTTP/1.1" 200 38 http-bio-8080-exec-6 4
+127.0.0.1 - - [30/Oct/2019:16:36:04 -0400] "POST /api/login HTTP/1.1" 200 38 http-bio-8080-exec-8 3

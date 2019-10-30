@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee0ec6ce-8233-4773-ae71-a34ba24de204" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/BD.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/model/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/model/Sorted.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/transfer/GameCompletedResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/transfer/GameRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/transfer/GameRequestEdit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/transfer/GameResponseAdd.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/transfer/GameResponseEdit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/transfer/GameToCompleteResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/transfer/LoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/transfer/LoginResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/transfer/LogoutRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/transfer/LogoutResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/transfer/SignupRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/EmailPassword.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/GSONMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/tools/GSONMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/GestionExceptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/tools/GestionExceptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/Token.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/WebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/emerycprimeau/WebService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tomcat/logs/access_log.2019-10-30" beforeDir="false" afterPath="$PROJECT_DIR$/target/tomcat/logs/access_log.2019-10-30" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -47,24 +27,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/emerycprimeau/WebService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="31">
-              <caret line="60" selection-start-line="60" selection-end-line="60" />
+            <state relative-caret-position="705">
+              <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1379#1380#0" expanded="true" />
                 <element signature="e#1431#1432#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/emerycprimeau/BD.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
+            <state relative-caret-position="490">
+              <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Init#0;class#BD#0" />
@@ -100,8 +81,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/emerycprimeau/Sorted.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/emerycprimeau/model/Game.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/emerycprimeau/model/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/emerycprimeau/WebService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/emerycprimeau/BD.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/emerycprimeau/WebService.java" />
       </list>
     </option>
   </component>
@@ -245,12 +226,12 @@
       <workItem from="1572366935591" duration="91000" />
       <workItem from="1572367081822" duration="161000" />
       <workItem from="1572367327524" duration="6109000" />
-      <workItem from="1572457433911" duration="8410000" />
+      <workItem from="1572457433911" duration="9642000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14771000" />
+    <option name="totallyTimeSpent" value="16003000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -263,9 +244,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.123667374" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.123667374" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -276,7 +256,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.33152762" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39869988" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869988" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32932165" />
@@ -414,24 +394,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/emerycprimeau/WebService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/emerycprimeau/BD.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
+        <state relative-caret-position="490">
+          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1431#1432#0" expanded="true" />
+            <element signature="method#Init#0;class#BD#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/emerycprimeau/BD.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/emerycprimeau/WebService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
+        <state relative-caret-position="705">
+          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Init#0;class#BD#0" />
+            <element signature="e#1379#1380#0" expanded="true" />
+            <element signature="e#1431#1432#0" expanded="true" />
           </folding>
         </state>
       </provider>

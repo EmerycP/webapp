@@ -63,18 +63,17 @@ public class WebService {
 
 
     @POST
-    @Path("signup")
-    public LoginResponse toSignUp (SignupRequest logR){
-        System.out.println("SignIn -> " + logR.email + " " + logR.password);
-        return bd.CreateUser(logR);
-    }
-
-
-    @POST
     @Path("login")
     public LoginResponse toLogIn (LoginRequest logR){
         System.out.println("LogIn -> " + logR.email + " " + logR.password);
         return bd.toLogin(logR);
+    }
+
+    @POST
+    @Path("signup")
+    public LoginResponse toSignUp (SignupRequest logR){
+        System.out.println("SignIn -> " + logR.email + " " + logR.password);
+        return bd.CreateUser(logR);
     }
 
 
