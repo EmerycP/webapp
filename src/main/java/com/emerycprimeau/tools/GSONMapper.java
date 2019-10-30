@@ -1,4 +1,4 @@
-package com.emerycprimeau;
+package com.emerycprimeau.tools;
 
 import com.google.gson.Gson;
 

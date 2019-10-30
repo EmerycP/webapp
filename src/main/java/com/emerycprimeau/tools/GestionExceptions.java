@@ -1,4 +1,4 @@
-package com.emerycprimeau;
+package com.emerycprimeau.tools;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
