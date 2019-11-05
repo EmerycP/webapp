@@ -1,6 +1,7 @@
 com\emerycprimeau\transfer\GameToCompleteResponse.class
 com\emerycprimeau\WebService.class
 com\emerycprimeau\transfer\GameResponseEdit.class
+com\emerycprimeau\Service.class
 com\emerycprimeau\transfer\LogoutResponse.class
 com\emerycprimeau\model\Sorted.class
 com\emerycprimeau\transfer\LogoutRequest.class

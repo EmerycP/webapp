@@ -1,10 +1,8 @@
 package com.emerycprimeau;
 
+import com.emerycprimeau.model.Game;
 import com.emerycprimeau.model.User;
-import com.emerycprimeau.transfer.GameCompletedResponse;
-import com.emerycprimeau.transfer.LoginRequest;
-import com.emerycprimeau.transfer.LoginResponse;
-import com.emerycprimeau.transfer.SignupRequest;
+import com.emerycprimeau.transfer.*;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -12,8 +10,11 @@ import java.util.*;
 public class BD {
 
     private static List<User> listUser = new ArrayList<>();
+    Service s = new Service();
     private static int idUser = 0;
-    private static int currentUser;
+
+    SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy  HH:mm");
+    String date = format.format(Date.parse(Calendar.getInstance().getTime().toString()));
 
     //private static List<Game> listUser;
 
@@ -27,7 +28,13 @@ public class BD {
         SignupRequest u1 = new SignupRequest();
         u1.email = "u1@gmail.com";
         u1.password = "password";
-        CreateUser(u1);
+        LoginResponse temp = CreateUser(u1);
+        s.getUser(temp.Id, listUser).game.add(new Game(1, date, "The Last of Us Part I", 96, true));
+        s.getUser(temp.Id, listUser).game.add(new Game(2, date, "The Surge 2", 79, true));
+        s.getUser(temp.Id,listUser).game.add(new Game(3, date, "Call of Duty: Modern Warfare", 0, false));
+        s.getUser(temp.Id,listUser).game.add(new Game(4, date, "Doom Eternal", 80, true));
+        s.getUser(temp.Id,listUser).game.add(new Game(5, date, "Destiny 2", 0, false));
+
 
         SignupRequest u2 = new SignupRequest();
         u2.email = "u2@gmail.com";
@@ -58,12 +65,13 @@ public class BD {
         User u = new User();
         u.email = req.email.toLowerCase();
         u.password = req.password;
-        u.gameCompleted = new ArrayList<>();
-        u.game2Complete = new ArrayList<>();
+        u.game = new ArrayList<>();
         u.ID = idUser++;
 
-        // add and connect
+        // add
         listUser.add(u);
+
+        //connect
         LoginResponse s = new LoginResponse();
         s.Id = u.ID;
         s.emailCleaned = u.email;
@@ -85,4 +93,38 @@ public class BD {
 
         throw new NullPointerException();
     }
+
+    public List<Game> getToCompleteList (int gR)
+    {
+
+        for (User u: listUser)
+        {
+            if(u.ID == gR)
+            {
+
+                return s.getToCompleteGame(u);
+
+            }
+        }
+        return null;
+    }
+
+    public List<Game> getCompletedList (int gR)
+    {
+
+        for (User u: listUser)
+        {
+            if(u.ID == gR)
+            {
+
+                return s.getCompletedGame(u);
+
+            }
+        }
+        return null;
+    }
+
+
+
+
 }

@@ -8,6 +8,5 @@ import java.util.List;
 
 public class User extends LoginRequest {
     public int ID;
-    public List<Game> game2Complete;
-    public List<Game> gameCompleted;
+    public List<Game> game;
 }

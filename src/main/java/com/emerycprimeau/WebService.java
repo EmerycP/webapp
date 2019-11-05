@@ -1,6 +1,8 @@
 package com.emerycprimeau;
 
+import com.emerycprimeau.model.Game;
 import com.emerycprimeau.model.User;
+import com.emerycprimeau.transfer.GameRequest;
 import com.emerycprimeau.transfer.LoginRequest;
 import com.emerycprimeau.transfer.LoginResponse;
 import com.emerycprimeau.transfer.SignupRequest;
@@ -58,6 +60,7 @@ public class WebService {
     @POST
     @Path("init")
     public void toInit (){
+        System.out.println("Init complété!");
         bd.InitUsers();
     }
 
@@ -74,6 +77,20 @@ public class WebService {
     public LoginResponse toSignUp (SignupRequest logR){
         System.out.println("SignIn -> " + logR.email + " " + logR.password);
         return bd.CreateUser(logR);
+    }
+
+    @GET
+    @Path("gameToComplete/{userId}")
+    public List<Game> getToCompleteList (@PathParam("userId") int gR){
+        System.out.println("getToComplete -> " + gR);
+        return bd.getToCompleteList(gR);
+    }
+
+    @GET
+    @Path("gameCompleted/{userId}")
+    public List<Game> getCompletedList (@PathParam("userId") int gR){
+        System.out.println("getCompleted -> userId:" + gR);
+        return bd.getCompletedList(gR);
     }
 
 
