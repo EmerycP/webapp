@@ -2,10 +2,7 @@ package com.emerycprimeau;
 
 import com.emerycprimeau.model.Game;
 import com.emerycprimeau.model.User;
-import com.emerycprimeau.transfer.GameRequest;
-import com.emerycprimeau.transfer.LoginRequest;
-import com.emerycprimeau.transfer.LoginResponse;
-import com.emerycprimeau.transfer.SignupRequest;
+import com.emerycprimeau.transfer.*;
 
 import javax.ws.rs.*;
 import java.util.List;
@@ -93,6 +90,13 @@ public class WebService {
         return bd.getCompletedList(gR);
     }
 
+    @POST
+    @Path("logout")
+    public boolean toLogOut (LogoutRequest lR)
+    {
+        System.out.println("logOut de l'utilisateur à l'index " + lR.userID);
+        return bd.toLogOut(lR);
+    }
 
 
 }

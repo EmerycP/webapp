@@ -94,6 +94,13 @@ public class BD {
         throw new NullPointerException();
     }
 
+    public boolean toLogOut (LogoutRequest lR)
+    {
+        if(s.getUser(lR.userID, listUser).ID == lR.userID)
+            return true;
+        throw new NullPointerException();
+    }
+
     public List<Game> getToCompleteList (int gR)
     {
 
