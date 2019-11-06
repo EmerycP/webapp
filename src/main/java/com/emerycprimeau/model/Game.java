@@ -9,6 +9,12 @@ public class Game {
 
     public Game () {}
 
+    public Game(String name, int score, boolean EstCompleter) {
+        this.Name = name;
+        this.Score = score;
+        this.EstCompleter = EstCompleter;
+    }
+
     public Game(int gameId, String date, String name, int score, boolean EstCompleter) {
         this.ID = gameId;
         this.date = date;

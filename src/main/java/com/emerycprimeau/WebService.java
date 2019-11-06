@@ -98,5 +98,13 @@ public class WebService {
         return bd.toLogOut(lR);
     }
 
+    @POST
+    @Path("GameAdded/{userId}")
+    public boolean toAdd(@PathParam("userId") int userId, Game game)
+    {
+        System.out.println("Ajout du jeu " + game.Name + " à la liste du user à l'index " + userId);
+        return bd.toAdd(userId, game);
+    }
+
 
 }

@@ -12,6 +12,7 @@ public class BD {
     private static List<User> listUser = new ArrayList<>();
     Service s = new Service();
     private static int idUser = 0;
+    private static int idGame = 0;
 
     SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy  HH:mm");
     String date = format.format(Date.parse(Calendar.getInstance().getTime().toString()));
@@ -29,12 +30,11 @@ public class BD {
         u1.email = "u1@gmail.com";
         u1.password = "password";
         LoginResponse temp = CreateUser(u1);
-        s.getUser(temp.Id, listUser).game.add(new Game(1, date, "The Last of Us Part I", 96, true));
-        s.getUser(temp.Id, listUser).game.add(new Game(2, date, "The Surge 2", 79, true));
-        s.getUser(temp.Id,listUser).game.add(new Game(3, date, "Call of Duty: Modern Warfare", 0, false));
-        s.getUser(temp.Id,listUser).game.add(new Game(4, date, "Doom Eternal", 80, true));
-        s.getUser(temp.Id,listUser).game.add(new Game(5, date, "Destiny 2", 0, false));
-
+        toAdd(temp.Id,new Game( "The Last of Us Part I", 96, true ));
+        toAdd(temp.Id,new Game("The Surge 2", 79, true));
+        toAdd(temp.Id,new Game("Call of Duty: Modern Warfare", 0, false));
+        toAdd(temp.Id,new Game("Doom Eternal", 80, true));
+        toAdd(temp.Id,new Game("Destiny 2", 0, false));
 
         SignupRequest u2 = new SignupRequest();
         u2.email = "u2@gmail.com";
@@ -130,6 +130,30 @@ public class BD {
         }
         return null;
     }
+
+
+    public boolean toAdd(int userId, Game game)
+    {
+        // valider tous les champs
+
+
+
+
+
+        // check existing game
+
+
+
+
+        if(game.EstCompleter)
+            s.getUser(userId, listUser).game.add(new Game(idGame++,date,game.Name,game.Score,game.EstCompleter));
+        else
+            s.getUser(userId, listUser).game.add(new Game(idGame++,date,game.Name,0,game.EstCompleter));
+
+
+        return true;
+    }
+
 
 
 

@@ -1,9 +1,11 @@
 package com.emerycprimeau;
 
 import com.emerycprimeau.model.Game;
+import com.emerycprimeau.model.Sorted;
 import com.emerycprimeau.model.User;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Service {
@@ -19,6 +21,7 @@ public class Service {
                 gL.add(g);
             }
         }
+        Collections.sort(gL, new Sorted());
         return gL;
     }
 
