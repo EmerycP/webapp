@@ -154,6 +154,43 @@ public class BD {
         return true;
     }
 
+    public Game toEdit (int gameId, int userId)
+    {
+        for(Game g: s.getUser(userId, listUser).game)
+        {
+            if(g.ID == gameId)
+            {
+                return g;
+            }
+        }
+        return null;
+    }
+
+    public Boolean gameEdit(GameRequestEdit g)
+    {
+        //faire de la vérification
+
+
+        //le créer
+        for (Game game: s.getUser(g.userID, listUser).game)
+        {
+            if(game.ID == g.gameID)
+            {
+                game.Name = g.name;
+                game.date = date;
+                game.EstCompleter = g.estComplete;
+                if(g.estComplete)
+                    game.Score = g.score;
+                else
+                    game.Score = 0;
+                return true;
+
+            }
+        }
+        return false;
+
+
+    }
 
 
 

@@ -8,6 +8,7 @@ import javax.ws.rs.ext.Provider;
 public class GestionExceptions implements ExceptionMapper<Exception> {
 
     public Response toResponse(Exception e) {
+        e.printStackTrace();
         return Response.status(Response.Status.BAD_REQUEST).entity(e.getClass().getSimpleName()).build();
     }
 }

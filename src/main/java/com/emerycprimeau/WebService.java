@@ -106,5 +106,21 @@ public class WebService {
         return bd.toAdd(userId, game);
     }
 
+    @GET
+    @Path("toEdit/{userId}/{gameId}")
+    public Game toEdit (@PathParam("userId") int userId, @PathParam("gameId") int gameId)
+    {
+        System.out.println("Getting the game "+ bd.toEdit(gameId, userId).Name + " with id -> " + gameId + " of user " + userId);
+        return  bd.toEdit(gameId, userId);
+    }
+
+    @POST
+    @Path("GameEdited")
+    public Boolean gameEdit (GameRequestEdit g)
+    {
+        System.out.println("Le jeu " + g.name + " a été modifié");
+        return bd.gameEdit(g);
+    }
+
 
 }
