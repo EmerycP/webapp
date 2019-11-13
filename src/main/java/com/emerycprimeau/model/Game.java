@@ -3,7 +3,7 @@ package com.emerycprimeau.model;
 public class Game {
     public int ID;
     public String Name;
-    public int Score;
+    public Integer Score;
     public boolean EstCompleter;
     public String date;
 
