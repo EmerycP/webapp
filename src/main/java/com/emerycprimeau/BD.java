@@ -89,7 +89,7 @@ public class BD {
 
         // create user
         User u = new User();
-        u.user = req.user.toLowerCase();
+        u.user = req.user;
         u.password = req.password;
         u.game = new ArrayList<>();
         u.ID = idUser++;
@@ -117,7 +117,7 @@ public class BD {
             if(s.user.equals(lR.user) && s.password.equals(lR.password))
             {
                 lRes.Id = s.ID;
-                lRes.emailCleaned = s.user.toLowerCase();
+                lRes.emailCleaned = s.user;
                 return lRes;
             }
 

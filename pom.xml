@@ -79,6 +79,10 @@
           <version>2.0</version>
           <configuration>
             <path>/</path>
+            <port>8888</port>
+            <httpsPort>8443</httpsPort>
+            <keystoreFile>${basedir}/keystore.jks</keystoreFile>
+            <keystorePass>password</keystorePass>
           </configuration>
         </plugin>
       </plugins>
