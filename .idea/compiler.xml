@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="web-server" />
         <module name="Desktop" />
+        <module name="webapp" />
       </profile>
     </annotationProcessing>
   </component>

@@ -62,6 +62,13 @@ public class BD {
     }
 
     public LoginResponse CreateUser(SignupRequest req) throws UsernameExist, BlankException, MaxLength, NoSpace {
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         // valider tous les champs
         if(req.user.equals("") || req.password.equals(""))
             throw new BlankException("BlankE");
@@ -108,6 +115,13 @@ public class BD {
 
     public LoginResponse toLogin (LoginRequest lR) throws NoMatch, BlankException {
 
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
         if(lR.user.equals("") || lR.password.equals(""))
             throw new BlankException("Blank");
 
@@ -125,6 +139,13 @@ public class BD {
     }
 
     public boolean toLogOut (LogoutRequest lR) throws NoUserConnected {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
         if(s.getUser(lR.userID, listUser).ID == lR.userID)
             return true;
         throw new NoUserConnected("NoU");
@@ -132,6 +153,12 @@ public class BD {
 
     public List<Game> getToCompleteList (int gR)
     {
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         for (User u: listUser)
         {
@@ -148,6 +175,12 @@ public class BD {
     public List<Game> getCompletedList (int gR)
     {
 
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         for (User u: listUser)
         {
             if(u.ID == gR)
@@ -162,6 +195,14 @@ public class BD {
 
 
     public boolean toAdd(int userId, Game game) throws NoUserConnected, GameExist, Score, MaxLength, BlankScore, BlankException, NoSpace {
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
         // valider tous les champs
 
         game.Name = game.Name.trim();
@@ -205,6 +246,13 @@ public class BD {
     }
 
     public Game toEdit (int gameId, int userId) throws GameSelectedDontExist, NoUserConnected {
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         for(Game g: s.getUser(userId, listUser).game)
         {
             if(!(userId >= 0))
@@ -218,6 +266,13 @@ public class BD {
     }
 
     public Boolean gameEdit(GameRequestEdit g) throws NoUserConnected, GameExist, Score, MaxLength, BlankScore, BlankException {
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         g.name = g.name.trim();
 
