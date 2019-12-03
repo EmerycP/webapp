@@ -2,19 +2,29 @@ package com.emerycprimeau;
 
 import com.emerycprimeau.exception.*;
 import com.emerycprimeau.model.Game;
+import com.emerycprimeau.model.Token;
 import com.emerycprimeau.model.User;
 import com.emerycprimeau.transfer.*;
+import com.google.gson.Gson;
 
+import javax.ws.rs.core.Cookie;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.NewCookie;
+import javax.ws.rs.core.Response;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class BD {
 
-    private static List<User> listUser = new ArrayList<>();
+    public static List<User> listUser = new ArrayList<>();
+    public static List<Token> listToken = new ArrayList<>();
     Service s = new Service();
     private static int idUser = 0;
     private static int idGame = 0;
 
+    public static final String Cookie = "gameQ-Cookie";
+
+    //date
     SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy  HH:mm");
     String date = format.format(Date.parse(Calendar.getInstance().getTime().toString()));
 
@@ -24,44 +34,44 @@ public class BD {
     {}
 
 
-    public void InitUsers() throws NoUserConnected, GameExist, Score, MaxLength, BlankScore, BlankException, NoSpace {
+    //    public void InitUsers() throws NoUserConnected, GameExist, Score, MaxLength, BlankScore, BlankException, NoSpace {
+//
+//        SignupRequest u1 = new SignupRequest();
+//        u1.user = "u1";
+//        u1.password = "password";
+//        LoginResponse temp = null;
+//        try {
+//            temp = CreateUser(u1);
+//        } catch (UsernameExist | NoSpace | MaxLength | BlankException usernameExist) {
+//            usernameExist.printStackTrace();
+//        }
+//        toAdd(temp.Id,new Game( "The Last of Us Part I", 96, true ));
+//        toAdd(temp.Id,new Game("The Surge 2", 79, true));
+//        toAdd(temp.Id,new Game("Call of Duty: Modern Warfare", 0, false));
+//        toAdd(temp.Id,new Game("Doom Eternal", 80, true));
+//        toAdd(temp.Id,new Game("Destiny 2", 0, false));
+//
+//        SignupRequest u2 = new SignupRequest();
+//        u2.user = "u2";
+//        u2.password = "password";
+//        try {
+//            CreateUser(u2);
+//        } catch (UsernameExist | NoSpace | MaxLength | BlankException usernameExist) {
+//            usernameExist.printStackTrace();
+//        }
+//
+//        SignupRequest u3 = new SignupRequest();
+//        u3.user = "u3";
+//        u3.password = "password";
+//        try {
+//            CreateUser(u3);
+//        } catch (UsernameExist | NoSpace | BlankException | MaxLength usernameExist) {
+//            usernameExist.printStackTrace();
+//        }
+//
+//    }
 
-        SignupRequest u1 = new SignupRequest();
-        u1.user = "u1";
-        u1.password = "password";
-        LoginResponse temp = null;
-        try {
-            temp = CreateUser(u1);
-        } catch (UsernameExist | NoSpace | MaxLength | BlankException usernameExist) {
-            usernameExist.printStackTrace();
-        }
-        toAdd(temp.Id,new Game( "The Last of Us Part I", 96, true ));
-        toAdd(temp.Id,new Game("The Surge 2", 79, true));
-        toAdd(temp.Id,new Game("Call of Duty: Modern Warfare", 0, false));
-        toAdd(temp.Id,new Game("Doom Eternal", 80, true));
-        toAdd(temp.Id,new Game("Destiny 2", 0, false));
-
-        SignupRequest u2 = new SignupRequest();
-        u2.user = "u2";
-        u2.password = "password";
-        try {
-            CreateUser(u2);
-        } catch (UsernameExist | NoSpace | MaxLength | BlankException usernameExist) {
-            usernameExist.printStackTrace();
-        }
-
-        SignupRequest u3 = new SignupRequest();
-        u3.user = "u3";
-        u3.password = "password";
-        try {
-            CreateUser(u3);
-        } catch (UsernameExist | NoSpace | BlankException | MaxLength usernameExist) {
-            usernameExist.printStackTrace();
-        }
-
-    }
-
-    public LoginResponse CreateUser(SignupRequest req) throws UsernameExist, BlankException, MaxLength, NoSpace {
+    public Response CreateUser(SignupRequest req) throws UsernameExist, BlankException, MaxLength, NoSpace {
 
         try {
             Thread.sleep(2000);
@@ -100,6 +110,11 @@ public class BD {
         u.password = req.password;
         u.game = new ArrayList<>();
         u.ID = idUser++;
+        String token = UUID.randomUUID().toString();
+        NewCookie nC = new NewCookie(Cookie, token, "/","", "id token", 604800, true);
+
+        listToken.add(new Token(token, u.ID, 604800));
+        System.out.println(token);
 
         // add
         listUser.add(u);
@@ -109,11 +124,11 @@ public class BD {
         s.Id = u.ID;
         s.emailCleaned = u.user;
 
-        return s;
+        return Response.ok(new Gson().toJson(s), MediaType.APPLICATION_JSON).cookie(nC).build();
     }
 
 
-    public LoginResponse toLogin (LoginRequest lR) throws NoMatch, BlankException {
+    public Response toLogin (LoginRequest lR) throws NoMatch, BlankException {
 
         try {
             Thread.sleep(2000);
@@ -132,23 +147,13 @@ public class BD {
             {
                 lRes.Id = s.ID;
                 lRes.emailCleaned = s.user;
-                return lRes;
+                String token = UUID.randomUUID().toString();
+                NewCookie nC = new NewCookie(Cookie, token, "/","", "id token", 604800, true);
+                listToken.add(new Token(token, s.ID, 604800));
+                return Response.ok(new Gson().toJson(lRes), MediaType.APPLICATION_JSON).cookie(nC).build();
             }
 
         throw new NoMatch("NM");
-    }
-
-    public boolean toLogOut (LogoutRequest lR) throws NoUserConnected {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
-        if(s.getUser(lR.userID, listUser).ID == lR.userID)
-            return true;
-        throw new NoUserConnected("NoU");
     }
 
     public List<Game> getToCompleteList (int gR)

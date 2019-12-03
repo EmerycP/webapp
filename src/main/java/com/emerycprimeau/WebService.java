@@ -2,9 +2,16 @@ package com.emerycprimeau;
 
 import com.emerycprimeau.exception.*;
 import com.emerycprimeau.model.Game;
+import com.emerycprimeau.model.Token;
+import com.emerycprimeau.model.User;
 import com.emerycprimeau.transfer.*;
+import com.google.gson.Gson;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Cookie;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.NewCookie;
+import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.UUID;
 
@@ -58,20 +65,20 @@ public class WebService {
     @Path("init")
     public void toInit () throws NoUserConnected, GameExist, Score, MaxLength, BlankScore, BlankException, NoSpace {
         System.out.println("Init complété!");
-        bd.InitUsers();
+        //bd.InitUsers();
     }
 
 
     @POST
     @Path("login")
-    public LoginResponse toLogIn (LoginRequest logR) throws NoMatch, BlankException {
+    public Response toLogIn (LoginRequest logR) throws NoMatch, BlankException {
         System.out.println("LogIn -> " + logR.user + " " + logR.password);
         return bd.toLogin(logR);
     }
 
     @POST
     @Path("signup")
-    public LoginResponse toSignUp (SignupRequest logR) throws UsernameExist, BlankException, MaxLength, NoSpace {
+    public Response toSignUp (SignupRequest logR) throws UsernameExist, BlankException, MaxLength, NoSpace {
         System.out.println("SignIn -> " + logR.user + " " + logR.password);
         return bd.CreateUser(logR);
     }
@@ -90,11 +97,26 @@ public class WebService {
         return bd.getCompletedList(gR);
     }
 
-    @POST
+    @GET
     @Path("logout")
-    public boolean toLogOut (LogoutRequest lR) throws NoUserConnected {
-        System.out.println("logOut de l'utilisateur à l'index " + lR.userID);
-        return bd.toLogOut(lR);
+    public Response toLogOut (@CookieParam(BD.Cookie)Cookie cookie) throws NoUserConnected {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        for(Token u: BD.listToken)
+        {
+            if(cookie.getValue().equals(u.token))
+            {
+                System.out.println(u.token + " " + u.userId);
+                BD.listToken.remove(u);
+                NewCookie aSupprimer = new NewCookie(BD.Cookie, null, "/", null, null, 0, true);
+                return Response.ok(new Gson().toJson(true), MediaType.APPLICATION_JSON).cookie(aSupprimer).build();
+            }
+        }
+        throw  new NoUserConnected("NoU");
     }
 
     @POST

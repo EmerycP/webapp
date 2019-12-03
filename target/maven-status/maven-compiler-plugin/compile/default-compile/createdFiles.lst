@@ -6,6 +6,7 @@ com\emerycprimeau\model\Sorted.class
 com\emerycprimeau\model\Game.class
 com\emerycprimeau\exception\UsernameExist.class
 com\emerycprimeau\transfer\GameResponseAdd.class
+com\emerycprimeau\model\Token.class
 com\emerycprimeau\exception\NoMatch.class
 com\emerycprimeau\transfer\LoginRequest.class
 com\emerycprimeau\exception\BlankScore.class
