@@ -84,22 +84,35 @@ public class WebService {
     }
 
     @GET
-    @Path("gameToComplete/{userId}")
-    public List<Game> getToCompleteList (@PathParam("userId") int gR){
-        System.out.println("getToComplete -> " + gR);
-        return bd.getToCompleteList(gR);
+    @Path("gameToComplete")
+    public List<Game> getToCompleteList (@CookieParam(BD.Cookie) Cookie cookie) throws TokenNotFound {
+        for(Token u: BD.listToken)
+        {
+            if(cookie.getValue().equals(u.token)) {
+                System.out.println("getToComplete -> " + u.userId);
+                return bd.getToCompleteList(u.userId);
+            }
+        }
+
+        throw new TokenNotFound("TNF");
     }
 
     @GET
-    @Path("gameCompleted/{userId}")
-    public List<Game> getCompletedList (@PathParam("userId") int gR){
-        System.out.println("getCompleted -> userId:" + gR);
-        return bd.getCompletedList(gR);
+    @Path("gameCompleted")
+    public List<Game> getCompletedList (@CookieParam(BD.Cookie) Cookie cookie) throws TokenNotFound {
+        for(Token u: BD.listToken)
+        {
+            if(cookie.getValue().equals(u.token)) {
+                System.out.println("getToComplete -> " + u.userId);
+                return bd.getCompletedList(u.userId);
+            }
+        }
+        throw new TokenNotFound("TNF");
     }
 
     @GET
     @Path("logout")
-    public Response toLogOut (@CookieParam(BD.Cookie)Cookie cookie) throws NoUserConnected {
+    public Response toLogOut (@CookieParam(BD.Cookie)Cookie cookie) throws NoUserConnected, TokenNotFound {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -116,27 +129,42 @@ public class WebService {
                 return Response.ok(new Gson().toJson(true), MediaType.APPLICATION_JSON).cookie(aSupprimer).build();
             }
         }
-        throw  new NoUserConnected("NoU");
+        throw new TokenNotFound("NoU");
     }
 
     @POST
-    @Path("GameAdded/{userId}")
-    public boolean toAdd(@PathParam("userId") int userId, Game game) throws NoUserConnected, GameExist, Score, MaxLength, BlankScore, BlankException, NoSpace {
-        System.out.println("Ajout du jeu " + game.Name + " à la liste du user à l'index " + userId);
-        return bd.toAdd(userId, game);
+    @Path("GameAdded")
+    public boolean toAdd(Game game, @CookieParam(BD.Cookie) Cookie cookie) throws NoUserConnected, GameExist, Score, MaxLength, BlankScore, BlankException, NoSpace {
+
+        for(Token u: BD.listToken)
+        {
+            if(cookie.getValue().equals(u.token)) {
+                System.out.println("Ajout du jeu " + game.Name + " à la liste du user à l'index " + u.userId);
+                return bd.toAdd(u.userId, game);
+            }
+        }
+        return false;
     }
 
     @GET
-    @Path("toEdit/{userId}/{gameId}")
-    public Game toEdit (@PathParam("userId") int userId, @PathParam("gameId") int gameId) throws GameSelectedDontExist, NoUserConnected {
-        System.out.println("Getting the game "+ bd.toEdit(gameId, userId).Name + " with id -> " + gameId + " of user " + userId);
-        return  bd.toEdit(gameId, userId);
+    @Path("toEdit/{gameId}")
+    public Game toEdit (@PathParam("gameId") int gameId, @CookieParam(BD.Cookie) Cookie cookie) throws GameSelectedDontExist, NoUserConnected, TokenNotFound {
+        for(Token u: BD.listToken)
+        {
+            if(cookie.getValue().equals(u.token)) {
+                System.out.println("Getting the game "+ bd.toEdit(gameId, u.userId).Name + " with id -> " + gameId + " of user " + u.userId);
+
+                return  bd.toEdit(gameId, u.userId);
+            }
+        }
+        throw new TokenNotFound("TNF");
     }
 
     @POST
     @Path("GameEdited")
     public Boolean gameEdit (GameRequestEdit g) throws NoUserConnected, GameExist, Score, MaxLength, BlankScore, BlankException {
         System.out.println("Le jeu " + g.name + " a été modifié");
+
         return bd.gameEdit(g);
     }
 
