@@ -162,10 +162,14 @@ public class WebService {
 
     @POST
     @Path("GameEdited")
-    public Boolean gameEdit (GameRequestEdit g) throws NoUserConnected, GameExist, Score, MaxLength, BlankScore, BlankException {
-        System.out.println("Le jeu " + g.name + " a été modifié");
-
-        return bd.gameEdit(g);
+    public Boolean gameEdit (GameRequestEdit g, @CookieParam(BD.Cookie) Cookie cookie) throws NoUserConnected, GameExist, Score, MaxLength, BlankScore, BlankException {
+        for(Token u: BD.listToken) {
+            if (cookie.getValue().equals(u.token)) {
+                System.out.println("Le jeu " + g.name + " a été modifié");
+                return bd.gameEdit(g);
+            }
+        }
+        return false;
     }
 
 

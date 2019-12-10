@@ -313,7 +313,7 @@ public class BD {
 
                 for (Game game2: s.getUser(g.userID, listUser).game)
                 {
-                    if(game.ID != game2.ID && game.Name.equals(game2.Name))
+                    if(g.gameID != game2.ID && g.name.equals(game2.Name))
                         throw new GameExist("GE");
                     else
                         game.Name = g.name;
